@@ -1,0 +1,2 @@
+export default function Page(){if(typeof window!=='undefined'){localStorage.setItem('OPENCLAW_LOCAL_TOKEN','f_OeGiD3HrlIUy7DW5t9MsuMeeLUv5y6ItB2uIaUKXrqKrc_1qY3TNWMdLmIxtLElLVvFdUgYaZ__DFf59d2mw');window.location.href='/boards';}
+return null}
