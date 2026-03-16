@@ -1,10 +1,10 @@
-t=2026-03-17T05:02:26+0700 lvl=info msg="no configuration paths supplied"
-t=2026-03-17T05:02:26+0700 lvl=info msg="using configuration at default config path" path="/Users/yanto/Library/Application Support/ngrok/ngrok.yml"
-t=2026-03-17T05:02:26+0700 lvl=info msg="open config file" path="/Users/yanto/Library/Application Support/ngrok/ngrok.yml" err=nil
-t=2026-03-17T05:02:26+0700 lvl=info msg="FIPS 140 mode" enabled=false
-t=2026-03-17T05:02:26+0700 lvl=eror msg="unable to check host info" obj=tunnels.session err="getting host ID: exec: \"ioreg\": executable file not found in $PATH"
-t=2026-03-17T05:02:26+0700 lvl=eror msg="unable to check ComputerName" obj=tunnels.session err="exec: \"scutil\": executable file not found in $PATH"
-t=2026-03-17T05:02:26+0700 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
-t=2026-03-17T05:02:26+0700 lvl=info msg="client session established" obj=tunnels.session
-t=2026-03-17T05:02:26+0700 lvl=info msg="tunnel session started" obj=tunnels.session
-t=2026-03-17T05:02:27+0700 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://localhost:3000 url=https://unmonastically-pseudoeditorial-wallace.ngrok-free.dev
+t=2026-03-17T05:05:41+0700 lvl=info msg="no configuration paths supplied"
+t=2026-03-17T05:05:41+0700 lvl=info msg="using configuration at default config path" path="/Users/yanto/Library/Application Support/ngrok/ngrok.yml"
+t=2026-03-17T05:05:41+0700 lvl=info msg="open config file" path="/Users/yanto/Library/Application Support/ngrok/ngrok.yml" err=nil
+t=2026-03-17T05:05:41+0700 lvl=info msg="FIPS 140 mode" enabled=false
+t=2026-03-17T05:05:41+0700 lvl=eror msg="unable to check host info" obj=tunnels.session err="getting host ID: exec: \"ioreg\": executable file not found in $PATH"
+t=2026-03-17T05:05:41+0700 lvl=eror msg="unable to check ComputerName" obj=tunnels.session err="exec: \"scutil\": executable file not found in $PATH"
+t=2026-03-17T05:05:41+0700 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2026-03-17T05:05:43+0700 lvl=info msg="client session established" obj=tunnels.session
+t=2026-03-17T05:05:43+0700 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2026-03-17T05:05:43+0700 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=http://localhost:3000 url=https://unmonastically-pseudoeditorial-wallace.ngrok-free.dev
