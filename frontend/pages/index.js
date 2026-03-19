@@ -1,1 +1,0 @@
-export default function Home(){return (<html><body><h1>Mission Panel v2</h1><p>Dashboard coming soon.</p></body></html>)}
