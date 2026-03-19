@@ -9,15 +9,19 @@ const AGENTS_META = {
 };
 
 function Character({ agent, index, containerWidth }) {
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [target, setTarget] = useState({ x: 0, y: 0 });
+  const initX = 60 + index * 100;
+  const [pos, setPos] = useState({ x: initX, y: 130 });
+  const [target, setTarget] = useState({ x: initX, y: 130 });
   const [facing, setFacing] = useState(1); // 1=right, -1=left
   const [frame, setFrame] = useState(0);
   const meta = AGENTS_META[agent.id] || AGENTS_META.main;
   const isActive = agent.active;
 
-  // Desk positions for active agents
-  const deskX = 60 + index * 140;
+  // Desk positions — spread evenly across container width
+  const totalAgents = 5;
+  const margin = 50;
+  const spacing = Math.max(80, (Math.max(containerWidth, 400) - margin * 2) / totalAgents);
+  const deskX = margin + index * spacing;
   const deskY = 140;
 
   useEffect(() => {
@@ -27,10 +31,10 @@ function Character({ agent, index, containerWidth }) {
     } else {
       // Wander randomly
       const wander = () => {
-        const maxW = Math.max(containerWidth - 60, 300);
+        const maxW = Math.max(containerWidth - 40, 300);
         setTarget({
-          x: 30 + Math.random() * (maxW - 60),
-          y: 100 + Math.random() * 80,
+          x: 20 + Math.random() * (maxW - 40),
+          y: 80 + Math.random() * 100,
         });
       };
       wander();
