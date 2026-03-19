@@ -14,6 +14,40 @@ function loadTasks() {
 function saveTask(task) {
   ensureDir();
   writeFileSync(join(TASKS_DIR, `${task.id}.json`), JSON.stringify(task, null, 2));
+  // Auto-sync to agent workspaces
+  try { syncAgentTasks(); } catch {}
+}
+
+function syncAgentTasks() {
+  const AGENT_WORKSPACES = {
+    Asep: "/Users/yanto/.openclaw/workspace-asep",
+    Bosku: "/Users/yanto/.openclaw/workspace-bosku",
+    Dimas: "/Users/yanto/.openclaw/workspace-dimas",
+    Lesti: "/Users/yanto/.openclaw/workspace-lesti",
+  };
+  const tasks = readdirSync(TASKS_DIR).filter(f => f.endsWith(".json")).map(f => {
+    try { return JSON.parse(readFileSync(join(TASKS_DIR, f), "utf8")); } catch { return null; }
+  }).filter(Boolean);
+
+  for (const [agent, ws] of Object.entries(AGENT_WORKSPACES)) {
+    if (!existsSync(ws)) continue;
+    const mine = tasks.filter(t => t.assignee === agent);
+    if (mine.length === 0) continue;
+    const active = mine.filter(t => t.status !== "done");
+    const lines = [`# Tasks for ${agent}`, `_Synced: ${new Date().toLocaleString("en-GB", {timeZone: "Asia/Jakarta"})}_`, ""];
+    if (active.length) {
+      lines.push("## Active Tasks");
+      for (const t of active) {
+        lines.push(`\n### [${t.status.toUpperCase()}] ${t.title}`);
+        lines.push(`- Priority: ${t.priority}`);
+        if (t.description) lines.push(`- ${t.description}`);
+        lines.push(`- ID: ${t.id}`);
+      }
+    }
+    const done = mine.filter(t => t.status === "done");
+    if (done.length) { lines.push("\n## Done"); done.forEach(t => lines.push(`- ~~${t.title}~~`)); }
+    writeFileSync(join(ws, "TASK.md"), lines.join("\n"));
+  }
 }
 
 export default function handler(req, res) {
